@@ -6,7 +6,10 @@
     "version": "1.0.0"
   },
   "servers": [
-    { "url": "/api", "description": "API base path" }
+    {
+      "url": "/api",
+      "description": "API base path"
+    }
   ],
   "components": {
     "securitySchemes": {
@@ -20,46 +23,122 @@
       "User": {
         "type": "object",
         "properties": {
-          "id":       { "type": "integer" },
-          "username": { "type": "string" },
-          "email":    { "type": "string" },
-          "role":     { "type": "string", "enum": ["buyer","seller","admin"] },
-          "token":    { "type": "string" }
+          "id": {
+            "type": "integer"
+          },
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "buyer",
+              "seller",
+              "admin"
+            ]
+          },
+          "token": {
+            "type": "string"
+          }
         }
       },
       "Sneaker": {
         "type": "object",
         "properties": {
-          "id":         { "type": "integer" },
-          "sellerId":   { "type": "integer" },
-          "categoryId": { "type": "integer" },
-          "brand":      { "type": "string" },
-          "model":      { "type": "string" },
-          "size":       { "type": "number" },
-          "gender":     { "type": "string", "enum": ["mens","womens","unisex"] },
-          "price":      { "type": "number" },
-          "condition":  { "type": "string", "enum": ["new","used"] },
-          "status":     { "type": "string", "enum": ["available","sold"] },
-          "createdAt":  { "type": "string", "format": "date-time" }
+          "id": {
+            "type": "integer"
+          },
+          "sellerId": {
+            "type": "integer"
+          },
+          "categoryId": {
+            "type": "integer"
+          },
+          "brand": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "size": {
+            "type": "number"
+          },
+          "gender": {
+            "type": "string",
+            "enum": [
+              "mens",
+              "womens",
+              "unisex"
+            ]
+          },
+          "price": {
+            "type": "number"
+          },
+          "condition": {
+            "type": "string",
+            "enum": [
+              "new",
+              "used"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "available",
+              "sold"
+            ]
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
         }
       },
       "Order": {
         "type": "object",
         "properties": {
-          "id":         { "type": "integer" },
-          "buyerId":    { "type": "integer" },
-          "totalPrice": { "type": "number" },
-          "status":     { "type": "string", "enum": ["pending","confirmed","cancelled","completed"] },
-          "createdAt":  { "type": "string", "format": "date-time" },
+          "id": {
+            "type": "integer"
+          },
+          "buyerId": {
+            "type": "integer"
+          },
+          "totalPrice": {
+            "type": "number"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "confirmed",
+              "cancelled",
+              "completed"
+            ]
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
           "orderItems": {
             "type": "array",
             "items": {
               "type": "object",
               "properties": {
-                "id":        { "type": "integer" },
-                "sneakerId": { "type": "integer" },
-                "quantity":  { "type": "integer" },
-                "unitPrice": { "type": "number" }
+                "id": {
+                  "type": "integer"
+                },
+                "sneakerId": {
+                  "type": "integer"
+                },
+                "quantity": {
+                  "type": "integer"
+                },
+                "unitPrice": {
+                  "type": "number"
+                }
               }
             }
           }
@@ -68,16 +147,27 @@
       "Category": {
         "type": "object",
         "properties": {
-          "id":          { "type": "integer" },
-          "name":        { "type": "string" },
-          "description": { "type": "string" },
-          "createdAt":   { "type": "string", "format": "date-time" }
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
         }
       },
       "Error": {
         "type": "object",
         "properties": {
-          "error": { "type": "string" }
+          "error": {
+            "type": "string"
+          }
         }
       }
     }
@@ -85,7 +175,9 @@
   "paths": {
     "/auth/signup": {
       "post": {
-        "tags": ["Authentication"],
+        "tags": [
+          "Authentication"
+        ],
         "summary": "Create a new user account",
         "requestBody": {
           "required": true,
@@ -93,27 +185,77 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["username","email","password"],
+                "required": [
+                  "username",
+                  "email",
+                  "password"
+                ],
                 "properties": {
-                  "username": { "type": "string", "example": "sneakerhead99" },
-                  "email":    { "type": "string", "example": "user@example.com" },
-                  "password": { "type": "string", "example": "Password123!" },
-                  "role":     { "type": "string", "enum": ["buyer","seller","admin"], "example": "buyer" }
+                  "username": {
+                    "type": "string",
+                    "example": "sneakerhead99"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "user@example.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "Password123!"
+                  },
+                  "role": {
+                    "type": "string",
+                    "enum": [
+                      "buyer",
+                      "seller",
+                      "admin"
+                    ],
+                    "example": "buyer"
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "201": { "description": "Account created", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/User" } } } },
-          "400": { "description": "Bad Request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
-          "409": { "description": "Email or username already exists", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "201": {
+            "description": "Account created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Email or username already exists",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/auth/login": {
       "post": {
-        "tags": ["Authentication"],
+        "tags": [
+          "Authentication"
+        ],
         "summary": "Log in and receive a JWT",
         "requestBody": {
           "required": true,
@@ -121,327 +263,963 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["email","password"],
+                "required": [
+                  "email",
+                  "password"
+                ],
                 "properties": {
-                  "email":    { "type": "string", "example": "seller1@example.com" },
-                  "password": { "type": "string", "example": "Seller123!" }
+                  "email": {
+                    "type": "string",
+                    "example": "seller1@example.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "Seller123!"
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "200": { "description": "Login successful", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/User" } } } },
-          "400": { "description": "Bad Request", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
-          "401": { "description": "Invalid credentials", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "200": {
+            "description": "Login successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
         }
       }
     },
     "/sneakers": {
       "post": {
-        "tags": ["Sneakers"],
+        "tags": [
+          "Sneakers"
+        ],
         "summary": "Create a new sneaker listing",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["brand","model","size","gender","price","condition","categoryId"],
+                "required": [
+                  "brand",
+                  "model",
+                  "size",
+                  "gender",
+                  "price",
+                  "condition",
+                  "categoryId"
+                ],
                 "properties": {
-                  "brand":      { "type": "string", "example": "Nike" },
-                  "model":      { "type": "string", "example": "Air Jordan 1 Retro High OG" },
-                  "size":       { "type": "number", "example": 10.5 },
-                  "gender":     { "type": "string", "enum": ["mens","womens","unisex"], "example": "mens" },
-                  "price":      { "type": "number", "example": 350.00 },
-                  "condition":  { "type": "string", "enum": ["new","used"], "example": "new" },
-                  "categoryId": { "type": "integer", "example": 4 }
+                  "brand": {
+                    "type": "string",
+                    "example": "Nike"
+                  },
+                  "model": {
+                    "type": "string",
+                    "example": "Air Jordan 1 Retro High OG"
+                  },
+                  "size": {
+                    "type": "number",
+                    "example": 10.5
+                  },
+                  "gender": {
+                    "type": "string",
+                    "enum": [
+                      "mens",
+                      "womens",
+                      "unisex"
+                    ],
+                    "example": "mens"
+                  },
+                  "price": {
+                    "type": "number",
+                    "example": 350.0
+                  },
+                  "condition": {
+                    "type": "string",
+                    "enum": [
+                      "new",
+                      "used"
+                    ],
+                    "example": "new"
+                  },
+                  "categoryId": {
+                    "type": "integer",
+                    "example": 4
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "201": { "description": "Sneaker created", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Sneaker" } } } },
-          "400": { "description": "Bad Request" },
-          "401": { "description": "Unauthorized" },
-          "403": { "description": "Forbidden: Not a seller" },
-          "404": { "description": "Category not found" },
-          "409": { "description": "Duplicate listing" }
+          "201": {
+            "description": "Sneaker created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Sneaker"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden: Not a seller"
+          },
+          "404": {
+            "description": "Category not found"
+          },
+          "409": {
+            "description": "Duplicate listing"
+          }
         }
       },
       "get": {
-        "tags": ["Sneakers"],
+        "tags": [
+          "Sneakers"
+        ],
         "summary": "Get all sneaker listings",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "brand",      "in": "query", "schema": { "type": "string" } },
-          { "name": "size",       "in": "query", "schema": { "type": "number" } },
-          { "name": "categoryId", "in": "query", "schema": { "type": "integer" } },
-          { "name": "maxPrice",   "in": "query", "schema": { "type": "number" } },
-          { "name": "gender",     "in": "query", "schema": { "type": "string", "enum": ["mens","womens","unisex"] } }
+          {
+            "name": "brand",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "categoryId",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "maxPrice",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "gender",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "mens",
+                "womens",
+                "unisex"
+              ]
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "List of sneakers", "content": { "application/json": { "schema": { "type": "array", "items": { "$ref": "#/components/schemas/Sneaker" } } } } },
-          "400": { "description": "Invalid query parameter" },
-          "401": { "description": "Unauthorized" }
+          "200": {
+            "description": "List of sneakers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Sneaker"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid query parameter"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
         }
       }
     },
     "/sneakers/{id}": {
       "get": {
-        "tags": ["Sneakers"],
+        "tags": [
+          "Sneakers"
+        ],
         "summary": "Get a sneaker by ID",
-        "security": [{ "bearerAuth": [] }],
-        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" }, "example": 1 }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 1
+          }
+        ],
         "responses": {
-          "200": { "description": "Sneaker found", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Sneaker" } } } },
-          "400": { "description": "Invalid ID" },
-          "401": { "description": "Unauthorized" },
-          "404": { "description": "Sneaker not found" }
+          "200": {
+            "description": "Sneaker found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Sneaker"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Sneaker not found"
+          }
         }
       },
       "put": {
-        "tags": ["Sneakers"],
+        "tags": [
+          "Sneakers"
+        ],
         "summary": "Update a sneaker listing",
-        "security": [{ "bearerAuth": [] }],
-        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" }, "example": 1 }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 1
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "brand":      { "type": "string" },
-                  "model":      { "type": "string" },
-                  "size":       { "type": "number" },
-                  "gender":     { "type": "string", "enum": ["mens","womens","unisex"] },
-                  "price":      { "type": "number" },
-                  "condition":  { "type": "string", "enum": ["new","used"] },
-                  "categoryId": { "type": "integer" }
+                  "brand": {
+                    "type": "string",
+                    "example": "Nike"
+                  },
+                  "model": {
+                    "type": "string",
+                    "example": "Air Jordan 1 Retro High OG"
+                  },
+                  "size": {
+                    "type": "number",
+                    "example": 10.5
+                  },
+                  "gender": {
+                    "type": "string",
+                    "enum": [
+                      "mens",
+                      "womens",
+                      "unisex"
+                    ],
+                    "example": "mens"
+                  },
+                  "price": {
+                    "type": "number",
+                    "example": 320.0
+                  },
+                  "condition": {
+                    "type": "string",
+                    "enum": [
+                      "new",
+                      "used"
+                    ],
+                    "example": "new"
+                  },
+                  "categoryId": {
+                    "type": "integer",
+                    "example": 4
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "200": { "description": "Sneaker updated", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Sneaker" } } } },
-          "400": { "description": "Bad Request" },
-          "401": { "description": "Unauthorized" },
-          "403": { "description": "Forbidden" },
-          "404": { "description": "Sneaker not found" },
-          "409": { "description": "Sneaker already sold" }
+          "200": {
+            "description": "Sneaker updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Sneaker"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Sneaker not found"
+          },
+          "409": {
+            "description": "Sneaker already sold"
+          }
         }
       },
       "delete": {
-        "tags": ["Sneakers"],
+        "tags": [
+          "Sneakers"
+        ],
         "summary": "Delete a sneaker listing",
-        "security": [{ "bearerAuth": [] }],
-        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" }, "example": 1 }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 1
+          }
+        ],
         "responses": {
-          "200": { "description": "Sneaker deleted", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Sneaker" } } } },
-          "400": { "description": "Bad Request" },
-          "401": { "description": "Unauthorized" },
-          "403": { "description": "Forbidden" },
-          "404": { "description": "Sneaker not found" },
-          "409": { "description": "Has active order" }
+          "200": {
+            "description": "Sneaker deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Sneaker"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Sneaker not found"
+          },
+          "409": {
+            "description": "Has active order"
+          }
         }
       }
     },
     "/orders": {
       "post": {
-        "tags": ["Orders"],
+        "tags": [
+          "Orders"
+        ],
         "summary": "Place a new order",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["sneakerIds"],
+                "required": [
+                  "sneakerIds"
+                ],
                 "properties": {
-                  "sneakerIds": { "type": "array", "items": { "type": "integer" }, "example": [1] }
+                  "sneakerIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "example": [
+                      1
+                    ]
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "201": { "description": "Order created", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Order" } } } },
-          "400": { "description": "Bad Request" },
-          "401": { "description": "Unauthorized" },
-          "403": { "description": "Forbidden" },
-          "404": { "description": "Sneaker not found" },
-          "409": { "description": "Sneaker already sold" }
+          "201": {
+            "description": "Order created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Sneaker not found"
+          },
+          "409": {
+            "description": "Sneaker already sold"
+          }
         }
       },
       "get": {
-        "tags": ["Orders"],
+        "tags": [
+          "Orders"
+        ],
         "summary": "Get orders (scoped by role)",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "status", "in": "query", "schema": { "type": "string", "enum": ["pending","confirmed","cancelled","completed"] } }
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "pending",
+                "confirmed",
+                "cancelled",
+                "completed"
+              ]
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "List of orders", "content": { "application/json": { "schema": { "type": "array", "items": { "$ref": "#/components/schemas/Order" } } } } },
-          "400": { "description": "Invalid status" },
-          "401": { "description": "Unauthorized" }
+          "200": {
+            "description": "List of orders",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Order"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
         }
       }
     },
     "/orders/{id}": {
       "get": {
-        "tags": ["Orders"],
+        "tags": [
+          "Orders"
+        ],
         "summary": "Get an order by ID",
-        "security": [{ "bearerAuth": [] }],
-        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" }, "example": 1 }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 1
+          }
+        ],
         "responses": {
-          "200": { "description": "Order found", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Order" } } } },
-          "400": { "description": "Invalid ID" },
-          "401": { "description": "Unauthorized" },
-          "403": { "description": "Forbidden" },
-          "404": { "description": "Order not found" }
+          "200": {
+            "description": "Order found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Order not found"
+          }
         }
       },
       "put": {
-        "tags": ["Orders"],
+        "tags": [
+          "Orders"
+        ],
         "summary": "Update order status",
-        "security": [{ "bearerAuth": [] }],
-        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" }, "example": 1 }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 1
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["status"],
+                "required": [
+                  "status"
+                ],
                 "properties": {
-                  "status": { "type": "string", "enum": ["pending","confirmed","cancelled","completed"] }
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "pending",
+                      "confirmed",
+                      "cancelled",
+                      "completed"
+                    ],
+                    "example": "confirmed"
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "200": { "description": "Order updated", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Order" } } } },
-          "400": { "description": "Bad Request" },
-          "401": { "description": "Unauthorized" },
-          "403": { "description": "Forbidden" },
-          "404": { "description": "Order not found" },
-          "409": { "description": "Already cancelled or completed" }
+          "200": {
+            "description": "Order updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Order not found"
+          },
+          "409": {
+            "description": "Already cancelled or completed"
+          }
         }
       },
       "delete": {
-        "tags": ["Orders"],
+        "tags": [
+          "Orders"
+        ],
         "summary": "Delete an order",
-        "security": [{ "bearerAuth": [] }],
-        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" }, "example": 1 }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 1
+          }
+        ],
         "responses": {
-          "200": { "description": "Order deleted", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Order" } } } },
-          "400": { "description": "Bad Request" },
-          "401": { "description": "Unauthorized" },
-          "403": { "description": "Forbidden" },
-          "404": { "description": "Order not found" },
-          "409": { "description": "Already confirmed or completed" }
+          "200": {
+            "description": "Order deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Order not found"
+          },
+          "409": {
+            "description": "Already confirmed or completed"
+          }
         }
       }
     },
     "/categories": {
       "post": {
-        "tags": ["Categories"],
+        "tags": [
+          "Categories"
+        ],
         "summary": "Create a new category",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["name"],
+                "required": [
+                  "name"
+                ],
                 "properties": {
-                  "name":        { "type": "string", "example": "Skate" },
-                  "description": { "type": "string", "example": "Skateboarding shoes" }
+                  "name": {
+                    "type": "string",
+                    "example": "Skate"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "Skateboarding shoes"
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "201": { "description": "Category created", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Category" } } } },
-          "400": { "description": "Bad Request" },
-          "401": { "description": "Unauthorized" },
-          "403": { "description": "Forbidden: Not an admin" },
-          "409": { "description": "Name already exists" }
+          "201": {
+            "description": "Category created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Category"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden: Not an admin"
+          },
+          "409": {
+            "description": "Name already exists"
+          }
         }
       },
       "get": {
-        "tags": ["Categories"],
+        "tags": [
+          "Categories"
+        ],
         "summary": "Get all categories",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
-          { "name": "name", "in": "query", "schema": { "type": "string" } }
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
-          "200": { "description": "List of categories", "content": { "application/json": { "schema": { "type": "array", "items": { "$ref": "#/components/schemas/Category" } } } } },
-          "400": { "description": "Invalid query parameter" },
-          "401": { "description": "Unauthorized" }
+          "200": {
+            "description": "List of categories",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Category"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid query parameter"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
         }
       }
     },
     "/categories/{id}": {
       "get": {
-        "tags": ["Categories"],
+        "tags": [
+          "Categories"
+        ],
         "summary": "Get a category by ID",
-        "security": [{ "bearerAuth": [] }],
-        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" }, "example": 1 }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 1
+          }
+        ],
         "responses": {
-          "200": { "description": "Category found", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Category" } } } },
-          "400": { "description": "Invalid ID" },
-          "401": { "description": "Unauthorized" },
-          "404": { "description": "Category not found" }
+          "200": {
+            "description": "Category found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Category"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Category not found"
+          }
         }
       },
       "put": {
-        "tags": ["Categories"],
+        "tags": [
+          "Categories"
+        ],
         "summary": "Update a category",
-        "security": [{ "bearerAuth": [] }],
-        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" }, "example": 1 }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 1
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "name":        { "type": "string" },
-                  "description": { "type": "string" }
+                  "name": {
+                    "type": "string",
+                    "example": "Limited Edition Updated"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "Updated description"
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "200": { "description": "Category updated", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Category" } } } },
-          "400": { "description": "Bad Request" },
-          "401": { "description": "Unauthorized" },
-          "403": { "description": "Forbidden: Not an admin" },
-          "404": { "description": "Category not found" },
-          "409": { "description": "Name conflict" }
+          "200": {
+            "description": "Category updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Category"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden: Not an admin"
+          },
+          "404": {
+            "description": "Category not found"
+          },
+          "409": {
+            "description": "Name conflict"
+          }
         }
       },
       "delete": {
-        "tags": ["Categories"],
+        "tags": [
+          "Categories"
+        ],
         "summary": "Delete a category",
-        "security": [{ "bearerAuth": [] }],
-        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" }, "example": 1 }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 1
+          }
+        ],
         "responses": {
-          "200": { "description": "Category deleted", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Category" } } } },
-          "400": { "description": "Bad Request" },
-          "401": { "description": "Unauthorized" },
-          "403": { "description": "Forbidden: Not an admin" },
-          "404": { "description": "Category not found" },
-          "409": { "description": "Has sneaker listings assigned" }
+          "200": {
+            "description": "Category deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Category"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden: Not an admin"
+          },
+          "404": {
+            "description": "Category not found"
+          },
+          "409": {
+            "description": "Has sneaker listings assigned"
+          }
         }
       }
     }
