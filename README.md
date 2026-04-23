@@ -3,9 +3,9 @@
 A peer-to-peer sneaker buying and selling REST API built with Node.js, Express, PostgreSQL, and Prisma ORM.
 
 ## Live Links
-- **API:** _Add your Render URL here_
-- **Docs (Swagger):** _Add your Render URL here_ + `/api/docs`
-- **Repository:** _Add your GitHub URL here_
+- **API:** https://sneaker-marketplace-api.onrender.com
+- **Docs (Swagger):** https://sneaker-marketplace-api.onrender.com/api/docs
+- **Repository:** https://github.com/mlavani-tech/sneaker-marketplace-api
 
 ## Tech Stack
 - Node.js + Express
